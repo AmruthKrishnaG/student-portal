@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login-service';
 
 @Component({
   selector: 'app-login',
@@ -10,18 +11,18 @@ import { Router } from '@angular/router';
 })
 export class Login {
   private router = inject(Router);
+  private loginService = inject(LoginService);
 
   username: string = '';
   password: string = '';
-  checkDetails() {
-    if (this.username === 'user' && this.password === 'user') {
-      // login success
 
-      // do something for the guard here - before redirection
+  constructor() {
+    localStorage.clear();
+  }
 
+  checkDetails(): void {
+    if (this.loginService.checkDetails(this.username, this.password)) {
       this.router.navigate(['students-list']);
-    } else {
-      alert('Wrong details');
     }
   }
 }
