@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="header">
+    <span>Class Average - {{ average }}</span>
+    <button (click)="showModal = true">Add new Student</button>
+  </div>
+  <div class="list-container">
+    @for (student of students | groupFilter : selectedGroup; track $index) {
+
+    <app-student-tile [student]="student"></app-student-tile>
+
+    } @empty {
+    <div>There are no students.</div>
+    }
+  </div>
+  <div class="modal" [hidden]="!showModal">
+    <div class="content">
+      <img
+        class="close"
+        src="assets/close.png"
+        width="18"
+        height="18"
+        alt="close button"
+        (click)="showModal = false"
+      />
+
+      <app-student-details-capture></app-student-details-capture>
+    </div>
+  </div>
+</div>

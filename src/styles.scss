@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+button {
+  padding: 0 20px;
+  background-color: #6366f1;
+  color: #fff;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+  }
+}
