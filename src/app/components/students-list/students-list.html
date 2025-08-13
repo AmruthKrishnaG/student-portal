@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="header">
     <span>Class Average - {{ average }}</span>
-    <button (click)="showModal = true">Add new Student</button>
+    <button (click)="showAddStudentModal = true">Add new Student</button>
   </div>
   <div class="list-container">
     @for (student of students | groupFilter : selectedGroup; track $index) {
@@ -12,7 +12,7 @@
     <div>There are no students.</div>
     }
   </div>
-  <div class="modal" [hidden]="!showModal">
+  <div class="modal" [hidden]="!showAddStudentModal">
     <div class="content">
       <img
         class="close"
@@ -20,10 +20,12 @@
         width="18"
         height="18"
         alt="close button"
-        (click)="showModal = false"
+        (click)="showAddStudentModal = false"
       />
 
-      <app-student-details-capture></app-student-details-capture>
+      <app-student-details-capture-template
+        (studentDetailsSubmit)="addStudent($event)"
+      ></app-student-details-capture-template>
     </div>
   </div>
 </div>
