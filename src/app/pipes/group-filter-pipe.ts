@@ -5,7 +5,10 @@ import { Student, Group } from '../models';
   name: 'groupFilter',
 })
 export class GroupFilterPipe implements PipeTransform {
-  transform(students: Student[], selectedGroup: Group): Student[] {
+  transform(students: Student[], selectedGroup: Group | undefined): Student[] {
+    if (selectedGroup) {
+      return students.filter((student) => student.group === selectedGroup);
+    }
     return students;
   }
 }

@@ -14,7 +14,7 @@ import { StudentDetailsCaptureTemplate } from '../student-details-capture-templa
 export class StudentsList {
   private studentsService = inject(StudentService);
 
-  selectedGroup: Group = 'commerce';
+  selectedGroup: Group | undefined = undefined;
   average: number = 0;
   students: Student[] = [];
 
