@@ -17,7 +17,7 @@ export class Login {
   password: string = '';
 
   constructor() {
-    // localStorage.clear();
+    localStorage.clear();
   }
 
   checkDetails(): void {
