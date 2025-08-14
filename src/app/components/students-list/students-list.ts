@@ -31,6 +31,7 @@ export class StudentsList {
 
   addStudent(studentDetails: Student) {
     if (studentDetails?.name) {
+      this.showAddStudentModal = false;
       this.students.push(studentDetails);
       this.updateClassAverage();
     }

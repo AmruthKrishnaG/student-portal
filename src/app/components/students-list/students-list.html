@@ -12,7 +12,8 @@
     <div>There are no students.</div>
     }
   </div>
-  <div class="modal" [hidden]="!showAddStudentModal">
+  @if(showAddStudentModal){
+  <div class="modal">
     <div class="content">
       <img
         class="close"
@@ -28,4 +29,5 @@
       ></app-student-details-capture-template>
     </div>
   </div>
+  }
 </div>
