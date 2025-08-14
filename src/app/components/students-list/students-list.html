@@ -24,9 +24,11 @@
         (click)="showAddStudentModal = false"
       />
 
-      <app-student-details-capture-template
+      <!-- <app-student-details-capture-template
         (studentDetailsSubmit)="addStudent($event)"
-      ></app-student-details-capture-template>
+      ></app-student-details-capture-template> -->
+
+      <app-student-details-capture-reactive></app-student-details-capture-reactive>
     </div>
   </div>
   }

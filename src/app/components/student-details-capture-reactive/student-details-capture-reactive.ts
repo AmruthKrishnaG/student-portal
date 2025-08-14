@@ -9,7 +9,7 @@ import { Student } from '../../models';
 })
 export class StudentDetailsCaptureReactive {
   studentDetailsSubmit = output<Student>();
-
+  removeThisArray: number[] = [];
   onSubmit(studentDetails: Student) {
     this.studentDetailsSubmit.emit(studentDetails);
   }

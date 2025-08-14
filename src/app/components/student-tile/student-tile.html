@@ -11,4 +11,11 @@
   </div>
   <div class="marks">Marks: {{ student.marks }}</div>
   <div class="group">Group: {{ student.group | uppercase }}</div>
+  <div class="attributes-list">
+    @for (attr of student.attributes; track $index) {
+    <div class="chip">
+      {{ attr }}
+    </div>
+    }
+  </div>
 </div>

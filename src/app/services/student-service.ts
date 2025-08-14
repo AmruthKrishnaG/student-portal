@@ -11,6 +11,7 @@ export class StudentService {
       marks: 70,
       group: 'science',
       gender: 'male',
+      attributes: ['Music', 'Football'],
     },
     {
       name: 'Peter',
@@ -23,6 +24,7 @@ export class StudentService {
       marks: 90,
       group: 'science',
       gender: 'female',
+      attributes: ['Crafts', 'Guitar'],
     },
   ];
 

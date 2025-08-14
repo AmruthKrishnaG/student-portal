@@ -4,10 +4,16 @@ import { Group, Student } from '../../models';
 import { StudentService } from '../../services/student-service';
 import { StudentTile } from '../student-tile/student-tile';
 import { StudentDetailsCaptureTemplate } from '../student-details-capture-template/student-details-capture-template';
+import { StudentDetailsCaptureReactive } from '../student-details-capture-reactive/student-details-capture-reactive';
 
 @Component({
   selector: 'app-students-list',
-  imports: [GroupFilterPipe, StudentTile, StudentDetailsCaptureTemplate],
+  imports: [
+    GroupFilterPipe,
+    StudentTile,
+    StudentDetailsCaptureTemplate,
+    StudentDetailsCaptureReactive,
+  ],
   templateUrl: './students-list.html',
   styleUrl: './students-list.scss',
 })

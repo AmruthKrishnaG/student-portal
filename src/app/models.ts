@@ -6,4 +6,5 @@ export interface Student {
   marks: number;
   group: Group;
   gender: Gender;
+  attributes?: string[];
 }

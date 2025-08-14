@@ -1,4 +1,5 @@
 .tile {
+  height: 100%;
   margin: 10px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
@@ -8,5 +9,21 @@
   .gender,
   .marks {
     margin-bottom: 10px;
+  }
+
+  .attributes-list {
+    padding: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    .chip {
+      padding: 5px 10px;
+      font-size: 14px;
+      margin-right: 10px;
+      margin-top: 10px;
+      border-radius: 15px;
+      border: 1px solid #000;
+      background-color: #fe8c1f;
+      color: #1ffefc;
+    }
   }
 }

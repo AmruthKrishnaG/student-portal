@@ -4,7 +4,7 @@
   h3 {
     padding-left: 20px;
   }
-  form {
+  .main-details {
     display: flex;
     flex-wrap: wrap;
   }
@@ -21,5 +21,27 @@
     flex: 0 0 100%;
     padding-right: 20px;
     padding-bottom: 20px;
+  }
+  .sub-header {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .attributes-list {
+    max-height: 150px;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    .attribute-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      img {
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
   }
 }
