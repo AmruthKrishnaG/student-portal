@@ -2,6 +2,9 @@
 * {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
+  &[hidden] {
+    display: none !important;
+  }
 }
 
 html,
