@@ -5,14 +5,14 @@
     padding: 0 20px;
     align-items: center;
     justify-content: space-between;
-
-    margin-bottom: 15px;
   }
   .list-container {
+    padding: 0 10px;
     display: flex;
     flex-wrap: wrap;
     app-student-tile {
       flex: 0 0 25%;
+      margin-top: 20px;
     }
   }
 }

@@ -1,6 +1,6 @@
 <div class="wrapper">
   <h3>Add New Student</h3>
-  <form [formGroup]="studentForm">
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
     <div class="main-details">
       <div class="form-group">
         <label for="name">Name</label>

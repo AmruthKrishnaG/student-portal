@@ -41,7 +41,7 @@ export class StudentDetailsCaptureReactive implements OnInit {
     });
   }
 
-  // onSubmit(studentDetails: Student) {
-  //   this.studentDetailsSubmit.emit(studentDetails);
-  // }
+  onSubmit() {
+    this.studentDetailsSubmit.emit(this.studentForm.value);
+  }
 }
