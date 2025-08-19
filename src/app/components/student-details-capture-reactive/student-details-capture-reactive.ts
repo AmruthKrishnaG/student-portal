@@ -1,10 +1,10 @@
 import { Component, inject, OnInit, output } from '@angular/core';
 import { Student } from '../../models';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -27,7 +27,6 @@ export function rangeValidator(formControl: FormControl) {
 })
 export class StudentDetailsCaptureReactive implements OnInit {
   studentDetailsSubmit = output<Student>();
-  removeThisArray: number[] = [];
 
   private fb = inject(FormBuilder);
   studentForm!: FormGroup;
@@ -38,7 +37,20 @@ export class StudentDetailsCaptureReactive implements OnInit {
       gender: ['', Validators.required],
       group: ['', Validators.required],
       marks: [0, [Validators.required, rangeValidator]],
+      attributes: this.fb.array([]),
     });
+  }
+
+  getAttributeArray() {
+    return this.studentForm.get('attributes') as FormArray;
+  }
+
+  addAttribute() {
+    this.getAttributeArray().push(this.fb.control('', Validators.required));
+  }
+
+  removeAttribute(index: number) {
+    this.getAttributeArray().removeAt(index);
   }
 
   onSubmit() {
