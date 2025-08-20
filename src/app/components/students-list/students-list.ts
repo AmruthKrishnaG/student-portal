@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { GroupFilterPipe } from '../../pipes/group-filter-pipe';
 import { Group, Student } from '../../models';
 import { StudentService } from '../../services/student-service';
@@ -17,7 +17,7 @@ import { StudentDetailsCaptureReactive } from '../student-details-capture-reacti
   templateUrl: './students-list.html',
   styleUrl: './students-list.scss',
 })
-export class StudentsList {
+export class StudentsList implements OnInit {
   private studentsService = inject(StudentService);
 
   selectedGroup: Group | undefined = undefined;
@@ -27,8 +27,21 @@ export class StudentsList {
   showAddStudentModal = false;
 
   constructor() {
-    this.students = this.studentsService.getStudents();
     this.updateClassAverage();
+  }
+
+  ngOnInit(): void {
+    this.getStudentsAndCalculateAverage();
+  }
+
+  getStudentsAndCalculateAverage() {
+    this.studentsService.getStudents().subscribe({
+      next: (data) => {
+        this.students = data;
+        this.updateClassAverage();
+      },
+      error: () => {},
+    });
   }
 
   updateClassAverage(): void {
@@ -38,8 +51,20 @@ export class StudentsList {
   addStudent(studentDetails: Student) {
     if (studentDetails?.name) {
       this.showAddStudentModal = false;
-      this.students.push(studentDetails);
-      this.updateClassAverage();
+      this.studentsService.addStudent(studentDetails).subscribe({
+        next: (data) => {
+          this.getStudentsAndCalculateAverage();
+        },
+        error: () => {},
+      });
     }
+  }
+
+  deleteStudent(student: Student) {
+    this.studentsService.deleteStudent(student).subscribe({
+      next: () => {
+        this.getStudentsAndCalculateAverage();
+      },
+    });
   }
 }

@@ -9,7 +9,10 @@
   <div class="list-container">
     @for (student of students | groupFilter : selectedGroup; track $index) {
 
-    <app-student-tile [student]="student"></app-student-tile>
+    <app-student-tile
+      (deleteStudent)="deleteStudent($event)"
+      [student]="student"
+    ></app-student-tile>
 
     } @empty {
     <div>There are no students.</div>

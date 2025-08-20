@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { Student } from '../../models';
 import { UpperCasePipe } from '@angular/common';
 
@@ -10,4 +10,11 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class StudentTile {
   @Input() student!: Student;
+  deleteStudent = output<Student>();
+
+  delete(student: Student) {
+    if (window.confirm('Delete selected student?')) {
+      this.deleteStudent.emit(student);
+    }
+  }
 }

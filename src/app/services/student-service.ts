@@ -1,35 +1,30 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Student } from '../models';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentService {
-  students: Student[] = [
-    {
-      name: 'John',
-      marks: 70,
-      group: 'science',
-      gender: 'male',
-      attributes: ['Music', 'Football'],
-    },
-    {
-      name: 'Peter',
-      marks: 80,
-      group: 'commerce',
-      gender: 'male',
-    },
-    {
-      name: 'Mary',
-      marks: 90,
-      group: 'science',
-      gender: 'female',
-      attributes: ['Crafts', 'Guitar'],
-    },
-  ];
+  private http = inject(HttpClient);
 
-  getStudents(): Student[] {
-    return this.students;
+  getStudents(): Observable<Student[]> {
+    return this.http.get<Student[]>('http://localhost:3000/students');
+  }
+
+  addStudent(studentDetails: Student) {
+    const id = Math.floor(Math.random() * 901) + 100;
+    return this.http.post('http://localhost:3000/students', {
+      ...studentDetails,
+      id: String(id),
+    });
+  }
+
+  deleteStudent(studentDetails: Student) {
+    return this.http.delete(
+      `http://localhost:3000/students/${studentDetails.id}`
+    );
   }
 
   calculateAverage(students: Student[]) {

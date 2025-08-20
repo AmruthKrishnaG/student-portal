@@ -1,4 +1,5 @@
 .tile {
+  position: relative;
   height: 100%;
   margin: 10px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
@@ -10,6 +11,12 @@
   .gender,
   .marks {
     margin-bottom: 10px;
+  }
+  .delete {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
   }
 
   .attributes-list {
