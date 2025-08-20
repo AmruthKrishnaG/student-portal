@@ -8,23 +8,22 @@ import { Observable } from 'rxjs';
 })
 export class StudentService {
   private http = inject(HttpClient);
+  baseURL = 'http://localhost:3000/students';
 
   getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>('http://localhost:3000/students');
+    return this.http.get<Student[]>(this.baseURL);
   }
 
   addStudent(studentDetails: Student) {
     const id = Math.floor(Math.random() * 901) + 100;
-    return this.http.post('http://localhost:3000/students', {
+    return this.http.post(this.baseURL, {
       ...studentDetails,
       id: String(id),
     });
   }
 
   deleteStudent(studentDetails: Student) {
-    return this.http.delete(
-      `http://localhost:3000/students/${studentDetails.id}`
-    );
+    return this.http.delete(`${this.baseURL}/${studentDetails.id}`);
   }
 
   calculateAverage(students: Student[]) {
