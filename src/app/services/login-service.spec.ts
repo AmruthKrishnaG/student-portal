@@ -13,4 +13,9 @@ describe('LoginService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should test checkDetails', () => {
+    expect(service.checkDetails('user', 'user')).toBeTruthy();
+    expect(service.checkDetails('user', 'blah')).toBeFalsy();
+  });
 });
